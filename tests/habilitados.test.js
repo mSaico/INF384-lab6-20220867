@@ -114,3 +114,59 @@ test('3.2: 200 en menos de 1 segundo con 150 códigos', async () => {
   expect(res.status).toBe(200);
   expect(duracion).toBeLessThan(1000);
 });
+
+// ─── Integración con la app real (router montado en src/app.js) ──────────────
+
+const appReal = require('../src/app');
+
+test('1.1: 27 cursos habilitados con ["1INF25","1INF27","1INF49"]', async () => {
+  const res = await request(appReal)
+    .post('/habilitados')
+    .send({ aprobados: ['1INF25', '1INF27', '1INF49'] });
+
+  expect(res.status).toBe(200);
+  expect(Array.isArray(res.body)).toBe(true);
+  expect(res.body).toHaveLength(27);
+
+  const ids = res.body.map((c) => c.id);
+  expect(ids).toContain('1INF29');
+  expect(ids).toContain('1INF30');
+  expect(ids).toContain('1INF31');
+  expect(ids).toContain('1INF32');
+
+  res.body.forEach((curso) => {
+    expect(curso).toHaveProperty('id');
+    expect(curso).toHaveProperty('name');
+  });
+});
+
+test('1.5: con 6 aprobados incluye 1CON27 y 1INF29-1INF32, no incluye 1INF34', async () => {
+  const res = await request(appReal)
+    .post('/habilitados')
+    .send({ aprobados: ['1INF25', '1INF27', '1INF49', '1IND90', '1INF28', '1INF33'] });
+
+  expect(res.status).toBe(200);
+  expect(Array.isArray(res.body)).toBe(true);
+
+  const ids = res.body.map((c) => c.id);
+  expect(ids).toContain('1CON27');
+  expect(ids).toContain('1INF29');
+  expect(ids).toContain('1INF30');
+  expect(ids).toContain('1INF31');
+  expect(ids).toContain('1INF32');
+
+  expect(ids).not.toContain('1INF34');
+});
+
+test('2.4: lista vacía devuelve solo cursos sin requisitos', async () => {
+  const res = await request(appReal)
+    .post('/habilitados')
+    .send({ aprobados: [] });
+
+  expect(res.status).toBe(200);
+  expect(Array.isArray(res.body)).toBe(true);
+
+  res.body.forEach((curso) => {
+    expect(curso.prerequisites.length).toBe(0);
+  });
+});

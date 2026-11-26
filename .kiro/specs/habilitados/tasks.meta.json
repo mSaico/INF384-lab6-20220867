@@ -93,6 +93,37 @@
         "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
         "timestamp": 1795732995080
       }
+    ],
+    "4.1 Montar el router en la app": [
+      {
+        "executionId": "cbbcb12e-7253-4a82-8771-1d2a93297322",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795733022516
+      },
+      {
+        "executionId": "cbbcb12e-7253-4a82-8771-1d2a93297322",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795733065486
+      }
+    ],
+    "4.2 Escribir tests de integración de la malla real en `tests/habilitados.test.js`": [
+      {
+        "executionId": "cbbcb12e-7253-4a82-8771-1d2a93297322",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795733024534
+      },
+      {
+        "executionId": "cbbcb12e-7253-4a82-8771-1d2a93297322",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795733067526
+      }
+    ],
+    "4. Montar el router en `src/app.js`": [
+      {
+        "executionId": "cbbcb12e-7253-4a82-8771-1d2a93297322",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795733067657
+      }
     ]
   }
 }

@@ -14,6 +14,9 @@ app.get('/health', (req, res) => {
 // Router de cursos montado en /cursos
 app.use('/cursos', require('./routes/cursos'));
 
+// Router de habilitados montado en /habilitados
+app.use('/habilitados', require('./routes/habilitados'));
+
 // Middleware de manejo de errores: respuesta genérica para errores no controlados.
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {

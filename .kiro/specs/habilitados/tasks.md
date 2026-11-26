@@ -45,12 +45,12 @@ Se añade el endpoint `POST /habilitados` a la API Express existente: valida el 
     - `test('3.2: 200 en menos de 1 segundo con 150 códigos')` — medir el tiempo de respuesta del POST con 150 códigos válidos y verificar que sea < 1000 ms
     - _Requisitos: 3.1, 3.2_
 
-- [ ] 4. Montar el router en `src/app.js`
-  - [ ] 4.1 Montar el router en la app
+- [x] 4. Montar el router en `src/app.js`
+  - [x] 4.1 Montar el router en la app
     - En `src/app.js`, añadir `app.use('/habilitados', require('./routes/habilitados'));` después del router de `/cursos` y antes del middleware de error global (no duplicarlo)
     - _Requisitos: 1.1, 1.5, 2.4_
 
-  - [ ] 4.2 Escribir tests de integración de la malla real en `tests/habilitados.test.js`
+  - [x] 4.2 Escribir tests de integración de la malla real en `tests/habilitados.test.js`
     - `test('1.1: 27 cursos habilitados con 1INF25, 1INF27 y 1INF49')` — POST con `{"aprobados": ["1INF25","1INF27","1INF49"]}` → 200, 27 cursos, incluye 1INF29, 1INF30, 1INF31 y 1INF32, cada objeto con `id` y `name`
     - `test('1.5: habilitados con 6 aprobados incluyen 1CON27 y 1INF29-1INF32, no 1INF34')` — POST con `{"aprobados": ["1INF25","1INF27","1INF49","1IND90","1INF28","1INF33"]}` → incluye 1CON27, 1INF29, 1INF30, 1INF31 y 1INF32; no incluye 1INF34
     - `test('2.4: lista vacía devuelve solo cursos sin requisitos')` — POST con `{"aprobados": []}` → 200 con todos los cursos sin requisitos y ningún curso con requisitos

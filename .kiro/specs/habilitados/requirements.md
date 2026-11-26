@@ -49,28 +49,30 @@ Funcionalidad para consultar los cursos habilitados para matrícula a partir de 
 
 #### Criterios de aceptación
 
-3.1 SI la lista `aprobados` contiene más de 500 elementos, ENTONCES EL sistema DEBE responder 400 con un mensaje de error en el campo `error`, en menos de 1 segundo, sin procesar la lista completa.
+3.1 SI la lista `aprobados` contiene más de 150 elementos, ENTONCES EL sistema DEBE responder 400 con un mensaje en el campo `error`.
 
-3.2 MIENTRAS se procese una lista válida de hasta 500 elementos, EL sistema DEBE responder 200 en menos de 1 segundo.
+3.2 CUANDO se envíe una lista válida de 150 códigos, EL sistema DEBE responder 200 en menos de 1 segundo.
 
-### Requisito 4: Manejo seguro de códigos con caracteres especiales
+### Requisito 4: Manejo seguro de entradas inválidas y errores
 
-**Historia de usuario:** Como administrador del servicio, quiero que códigos maliciosos no expongan información interna, para proteger el servidor.
-
-#### Criterios de aceptación
-
-4.1 SI la lista `aprobados` contiene un código con caracteres especiales (por ejemplo `1INF30<script>`), ENTONCES EL sistema DEBE responder 400 con un mensaje de error en el campo `error` del cuerpo JSON, sin incluir stack traces, rutas de archivos ni detalles internos en la respuesta.
-
-4.2 CUANDO ocurra un error interno no controlado, EL sistema DEBE responder 500 con el mensaje genérico `{"error": "error interno del servidor"}`, sin incluir stack traces ni rutas del sistema de archivos.
-
-### Requisito 5: Calidad del servicio
-
-**Historia de usuario:** Como alumno, quiero un servicio confiable y seguro, para consultar mis cursos habilitados sin problemas.
+**Historia de usuario:** Como administrador del servicio, quiero que entradas maliciosas no expongan información interna, para proteger el servidor.
 
 #### Criterios de aceptación
 
-5.1 CUANDO se ejecute `npm audit --omit=dev`, EL sistema DEBE reportar cero vulnerabilidades de severidad alta o crítica.
+4.1 SI algún elemento de `aprobados` no cumple el formato de código de curso (6 caracteres en mayúscula o dígitos, `^[A-Z0-9]{6}$`, por ejemplo `1INF30<script>`), ENTONCES EL sistema DEBE responder 400 con un mensaje en el campo `error`.
 
-5.2 CUANDO se ejecute `jest --coverage --runInBand`, EL sistema DEBE reportar una cobertura de líneas no menor al 80 %.
+4.2 SI el cuerpo de la solicitud no es JSON válido, ENTONCES EL sistema DEBE responder 400 con un mensaje en el campo `error`.
 
-5.3 DONDE se revise el repositorio, EL sistema DEBE mantener los secretos fuera de los archivos versionados, usando variables de entorno según el ejemplo `config/ejemplo.env`.
+4.3 SI ocurre un error interno no controlado, ENTONCES EL sistema DEBE responder 500 con el cuerpo exacto `{"error": "error interno del servidor"}`, sin stack trace ni rutas de archivos.
+
+### Requisito 5: Calidad y seguridad del pipeline
+
+**Historia de usuario:** Como responsable de TI, quiero que el pipeline haga cumplir la política, para que ningún cambio que llegue a main la incumpla.
+
+#### Criterios de aceptación
+
+5.1 SI la cobertura de líneas de las pruebas es menor a 80 %, ENTONCES EL pipeline DEBE fallar.
+
+5.2 SI `npm audit` reporta al menos una vulnerabilidad de severidad alta o crítica en cualquier dependencia (incluidas las de desarrollo), ENTONCES EL pipeline DEBE fallar.
+
+5.3 SI gitleaks detecta un secreto en el historial del repositorio, ENTONCES EL pipeline DEBE fallar.

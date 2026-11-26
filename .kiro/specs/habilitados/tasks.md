@@ -37,7 +37,7 @@ Se añade el endpoint `POST /habilitados` a la API Express existente: valida el 
 
 - [ ] 3. Límite de 150 elementos
   - [ ] 3.1 Añadir la validación de tamaño al router `src/routes/habilitados.js`
-    - Después de validar el formato, si `aprobados.length > 150` responder 400 con `"la lista no puede tener más de 150 elementos"` (el chequeo se aplica sobre el array original, decisión b del diseño)
+    - Inmediatamente después de comprobar que `aprobados` es un array y ANTES de validar cada elemento, si `aprobados.length > 150` responder 400 con `"la lista no puede tener más de 150 elementos"`, para no recorrer listas masivas (hallazgo 1)
     - _Requisitos: 3.1, 3.2_
 
   - [ ] 3.2 Escribir tests del límite en `tests/habilitados.test.js`
@@ -93,17 +93,17 @@ Se añade el endpoint `POST /habilitados` a la API Express existente: valida el 
     - _Requisitos: 1.2, 1.3_
 
 - [ ] 7. Checkpoint - Verificar la suite completa
-  - Ejecutar `npm test` (o `npx jest --run`) y confirmar que todos los tests de `tests/habilitados*.test.js` y las suites existentes pasan
+  - Ejecutar `npm test` y confirmar que todos los tests de `tests/habilitados*.test.js` y las suites existentes pasan
   - Corregir cualquier fallo antes de continuar
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 8. Gates de calidad y seguridad en CI **([manual] - la hará el usuario a mano; no ejecutar)**
-  - [ ] 8.1 Añadir `coverageThreshold` a `jest.config.js`
+  - [ ] 8.1 Añadir `coverageThreshold` a `package.json (clave "jest")`
     - `coverageThreshold: { global: { lines: 80 } }` (criterio 5.1)
     - _Requisitos: 5.1_
 
   - [ ] 8.2 Actualizar `.github/workflows/ci.yml`
-    - Paso de pruebas con `npx jest --run --coverage` (falla si la cobertura de líneas es < 80 %, criterio 5.1)
+    - Paso de pruebas con `npm test (que ejecuta jest --coverage)` (falla si la cobertura de líneas es < 80 %, criterio 5.1)
     - Paso `npm audit --audit-level=high` sin `--omit=dev` (falla con severidad high o critical, criterio 5.2)
     - Paso de gitleaks con `fetch-depth: 0` sobre todo el historial, umbral 0 hallazgos (criterio 5.3)
     - Mantener los triggers `pull_request` y `push` a main

@@ -104,7 +104,7 @@ Modelo de la solicitud: `{ "aprobados": string[] }`, validado en el router antes
 | Cuerpo no es JSON válido | `400` | `{ "error": "cuerpo JSON inválido" }` (manejado por el error handler de `express.json()`, ajustado a este formato) |
 | Error interno no controlado | `500` | `{ "error": "error interno del servidor" }` (middleware global existente, sin stack trace) |
 
-Los mensajes de error nunca incluyen stack traces ni rutas de archivos. El elemento inválido solo llega al mensaje después del chequeo de tipo (es un string), y el chequeo de formato lo rechaza antes de cualquier uso posterior.
+Los mensajes de error nunca incluyen stack traces ni rutas de archivos.
 
 ## Decisiones
 

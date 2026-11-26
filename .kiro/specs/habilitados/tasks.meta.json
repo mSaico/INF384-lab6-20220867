@@ -62,6 +62,37 @@
         "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
         "timestamp": 1795731451026
       }
+    ],
+    "3.1 Añadir la validación de tamaño al router `src/routes/habilitados.js`": [
+      {
+        "executionId": "ab1eaff6-519b-492d-8862-320056ab950f",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795732959031
+      },
+      {
+        "executionId": "ab1eaff6-519b-492d-8862-320056ab950f",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795732992984
+      }
+    ],
+    "3.2 Escribir tests del límite en `tests/habilitados.test.js`": [
+      {
+        "executionId": "ab1eaff6-519b-492d-8862-320056ab950f",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795732961033
+      },
+      {
+        "executionId": "ab1eaff6-519b-492d-8862-320056ab950f",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795732995020
+      }
+    ],
+    "3. Límite de 150 elementos": [
+      {
+        "executionId": "ab1eaff6-519b-492d-8862-320056ab950f",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795732995080
+      }
     ]
   }
 }

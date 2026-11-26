@@ -79,3 +79,38 @@ test('4.1: 400 si un código no cumple el formato', async () => {
   expect(r4.status).toBe(400);
   expect(r4.body).toHaveProperty('error');
 });
+
+// ─── Límite de tamaño ────────────────────────────────────────────────────────
+
+test('3.1: 400 con 151 códigos válidos, 200 con 150', async () => {
+  // Genera n códigos válidos con formato ^[A-Z0-9]{6}$
+  const genCodigos = (n) =>
+    Array.from({ length: n }, (_, i) => {
+      const num = String(i).padStart(5, '0');
+      return `A${num}`;
+    });
+
+  const codigos151 = genCodigos(151);
+  const r1 = await request(app).post('/habilitados').send({ aprobados: codigos151 });
+  expect(r1.status).toBe(400);
+  expect(r1.body).toHaveProperty('error');
+
+  const codigos150 = genCodigos(150);
+  const r2 = await request(app).post('/habilitados').send({ aprobados: codigos150 });
+  expect(r2.status).toBe(200);
+  expect(Array.isArray(r2.body)).toBe(true);
+});
+
+test('3.2: 200 en menos de 1 segundo con 150 códigos', async () => {
+  const codigos150 = Array.from({ length: 150 }, (_, i) => {
+    const num = String(i).padStart(5, '0');
+    return `A${num}`;
+  });
+
+  const inicio = Date.now();
+  const res = await request(app).post('/habilitados').send({ aprobados: codigos150 });
+  const duracion = Date.now() - inicio;
+
+  expect(res.status).toBe(200);
+  expect(duracion).toBeLessThan(1000);
+});

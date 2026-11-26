@@ -21,23 +21,23 @@ router.post('/', (req, res) => {
       .json({ error: 'aprobados debe ser un array de strings' });
   }
 
-  // 3. Todos los elementos son strings
+  // 3. Límite de tamaño (antes de recorrer los elementos: evita escanear listas masivas)
+  if (aprobados.length > 150) {
+    return res
+      .status(400)
+      .json({ error: 'la lista no puede tener más de 150 elementos' });
+  }
+
+  // 4. Todos los elementos son strings
   if (!aprobados.every((el) => typeof el === 'string')) {
     return res
       .status(400)
       .json({ error: 'aprobados debe ser un array de strings' });
   }
 
-  // 4. Formato del código de curso
+  // 5. Formato del código de curso
   if (!aprobados.every((el) => CODIGO_CURSO.test(el))) {
     return res.status(400).json({ error: 'código de curso inválido' });
-  }
-
-  // 5. Límite de tamaño (tarea 3 aplicará el tope; aquí solo el cálculo)
-  if (aprobados.length > 150) {
-    return res
-      .status(400)
-      .json({ error: 'la lista no puede tener más de 150 elementos' });
   }
 
   const aprobadosSet = new Set(aprobados);

@@ -35,12 +35,12 @@ Se añade el endpoint `POST /habilitados` a la API Express existente: valida el 
     - `test('4.1: 400 si un código no cumple el formato')` — POST con `"1INF30<script>"`, `"1inf25"`, longitudes 5 y 7 → 400 con `error`
     - _Requisitos: 2.1, 2.2, 2.3, 4.1_
 
-- [ ] 3. Límite de 150 elementos
-  - [ ] 3.1 Añadir la validación de tamaño al router `src/routes/habilitados.js`
+- [x] 3. Límite de 150 elementos
+  - [x] 3.1 Añadir la validación de tamaño al router `src/routes/habilitados.js`
     - Inmediatamente después de comprobar que `aprobados` es un array y ANTES de validar cada elemento, si `aprobados.length > 150` responder 400 con `"la lista no puede tener más de 150 elementos"`, para no recorrer listas masivas (hallazgo 1)
     - _Requisitos: 3.1, 3.2_
 
-  - [ ] 3.2 Escribir tests del límite en `tests/habilitados.test.js`
+  - [x] 3.2 Escribir tests del límite en `tests/habilitados.test.js`
     - `test('3.1: 400 con 151 códigos válidos, 200 con 150')` — generar 151 y 150 códigos válidos (`1INF25` con variaciones de dígito) y verificar 400/200 respectivamente
     - `test('3.2: 200 en menos de 1 segundo con 150 códigos')` — medir el tiempo de respuesta del POST con 150 códigos válidos y verificar que sea < 1000 ms
     - _Requisitos: 3.1, 3.2_

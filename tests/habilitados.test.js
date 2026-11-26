@@ -170,3 +170,44 @@ test('2.4: lista vacía devuelve solo cursos sin requisitos', async () => {
     expect(curso.prerequisites.length).toBe(0);
   });
 });
+
+// ─── Manejo seguro de errores (requisito 4.2 y 4.3) ──────────────────────────
+
+const repositorio = require('../src/data/repositorio');
+
+test('4.2: 400 con cuerpo no JSON', async () => {
+  const res = await request(appReal)
+    .post('/habilitados')
+    .set('Content-Type', 'application/json')
+    .send('no json');
+
+  expect(res.status).toBe(400);
+  expect(res.body).toHaveProperty('error');
+  expect(res.body).not.toEqual({ error: 'error interno del servidor' });
+});
+
+describe('4.3: 500 ante error interno', () => {
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  test('500 con cuerpo exacto y sin stack trace', async () => {
+    jest
+      .spyOn(repositorio, 'listarHabilitados')
+      .mockImplementation(() => {
+        throw new Error('boom en /t/ruta/secreta/src/app.js');
+      });
+
+    const res = await request(appReal)
+      .post('/habilitados')
+      .send({ aprobados: ['1INF25'] });
+
+    expect(res.status).toBe(500);
+    expect(res.body).toEqual({ error: 'error interno del servidor' });
+
+    const cuerpo = JSON.stringify(res.body);
+    expect(cuerpo).not.toContain('at ');
+    expect(cuerpo).not.toContain('/t/');
+    expect(cuerpo).not.toContain('stack');
+  });
+});

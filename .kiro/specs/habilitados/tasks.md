@@ -56,12 +56,12 @@ Se añade el endpoint `POST /habilitados` a la API Express existente: valida el 
     - `test('2.4: lista vacía devuelve solo cursos sin requisitos')` — POST con `{"aprobados": []}` → 200 con todos los cursos sin requisitos y ningún curso con requisitos
     - _Requisitos: 1.1, 1.5, 2.4_
 
-- [ ] 5. Manejo seguro de errores del endpoint
-  - [ ] 5.1 Ajustar el error handler de `express.json()` en `src/app.js`
+- [x] 5. Manejo seguro de errores del endpoint
+  - [x] 5.1 Ajustar el error handler de `express.json()` en `src/app.js`
     - Capturar el error de parseo de JSON antes del middleware global y responder 400 con `{ "error": "cuerpo JSON inválido" }` en lugar del 500 genérico
     - _Requisitos: 4.2_
 
-  - [ ] 5.2 Escribir tests de errores en `tests/habilitados.test.js`
+  - [x] 5.2 Escribir tests de errores en `tests/habilitados.test.js`
     - `test('4.2: 400 con cuerpo no JSON')` — POST con `set('Content-Type','application/json').send('no json')` → 400 con `error`
     - `test('4.3: 500 con cuerpo exacto ante error interno')` — stub de `repositorio.listarHabilitados` con `jest.spyOn`/`jest.mock` que lanza una excepción → 500 con el cuerpo exacto `{"error": "error interno del servidor"}`, sin stack trace ni rutas
     - Restaurar el stub después del test (`afterEach`)

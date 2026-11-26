@@ -124,6 +124,37 @@
         "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
         "timestamp": 1795733067657
       }
+    ],
+    "5.1 Ajustar el error handler de `express.json()` en `src/app.js`": [
+      {
+        "executionId": "053a82d5-9d38-4df1-a7a7-616170cadefd",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795733124959
+      },
+      {
+        "executionId": "053a82d5-9d38-4df1-a7a7-616170cadefd",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795733187967
+      }
+    ],
+    "5.2 Escribir tests de errores en `tests/habilitados.test.js`": [
+      {
+        "executionId": "053a82d5-9d38-4df1-a7a7-616170cadefd",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795733127013
+      },
+      {
+        "executionId": "053a82d5-9d38-4df1-a7a7-616170cadefd",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795733190184
+      }
+    ],
+    "5. Manejo seguro de errores del endpoint": [
+      {
+        "executionId": "053a82d5-9d38-4df1-a7a7-616170cadefd",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795733190230
+      }
     ]
   }
 }

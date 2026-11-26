@@ -99,7 +99,7 @@ Modelo de la solicitud: `{ "aprobados": string[] }`, validado en el router antes
 | Falta el campo `aprobados` | `400` | `{ "error": "el campo aprobados es obligatorio" }` |
 | `aprobados` no es array (ej. string) | `400` | `{ "error": "aprobados debe ser un array de strings" }` |
 | Algún elemento no es string (ej. `[1, null]`) | `400` | `{ "error": "aprobados debe ser un array de strings" }` |
-| Elemento con formato inválido (no `^[A-Z0-9]{6}$`) | `400` | `{ "error": "código de curso inválido: <elemento>" }` |
+| Elemento con formato inválido (no `^[A-Z0-9]{6}$`) | `400` | `{ "error": "código de curso inválido" }` |
 | Más de 150 elementos | `400` | `{ "error": "la lista no puede tener más de 150 elementos" }` |
 | Cuerpo no es JSON válido | `400` | `{ "error": "cuerpo JSON inválido" }` (manejado por el error handler de `express.json()`, ajustado a este formato) |
 | Error interno no controlado | `500` | `{ "error": "error interno del servidor" }` (middleware global existente, sin stack trace) |
@@ -117,13 +117,13 @@ Los mensajes de error nunca incluyen stack traces ni rutas de archivos. El eleme
 | e. Orden de la respuesta | Orden definido: el de `listar()`, que es el orden del JSON fuente (aprox. por ciclo 5 a 10, luego electivos) | Un orden estable simplifica los tests y el consumo del front-end; el filtrado recorre `listar()` una sola vez y no reordena, así que este orden sale gratis. |
 | f. Forma de la respuesta | Cada objeto incluye `id`, `name`, `credits`, `cycle`, `type` y `prerequisites` (códigos) | El mínimo exigido es `id` y `name` (criterio 1.1), pero devolver el objeto completo del repositorio evita un mapeo extra y da al cliente créditos, ciclo y requisitos para la matrícula. `prerequisites` se devuelve como códigos planos (el endpoint `GET /cursos/:codigo` ya ofrece la versión resuelta con nombres). |
 
-## Gates de calidad
+## Gates de calidad y seguridad
 
-| Gate | Herramienta | Umbral | Acción si falla | Etapa | Razón |
-|------|------------|--------|-----------------|-------|-------|
-| Cobertura de líneas | jest --coverage | ≥ 80 % | Bloquea el PR | PR (push/pull_request) | Garantiza que el código nuevo tiene pruebas antes de llegar a main |
-| SCA (análisis de composición de software) | npm audit | 0 vulns high/critical | Bloquea el PR | PR | Ninguna dependencia vulnerable llega a main |
-| Secretos en el repo | gitleaks | 0 secretos detectados | Bloquea el PR | PR (escanea todo el historial) | Evita que credenciales o tokens queden expuestos en el historial |
+| Gate | Herramienta y umbral | Bloquea / avisa | Etapa | Razón |
+| --- | --- | --- | --- | --- |
+| Cobertura (5.1) | `jest --coverage` con `coverageThreshold.global.lines = 80`: falla si la cobertura de líneas es menor a 80 % | Bloquea (el job falla) | `pull_request` y `push` a main | La política fija un piso de 80 % de líneas para todo cambio que llega a main; se mide líneas porque es la unidad de la política. Corre en el PR para detectar código sin pruebas antes de integrar, y en el push a main porque en este repo también se integra con push directo. |
+| SCA (5.2) | `npm audit --audit-level=high` sobre todas las dependencias (sin `--omit=dev`) | Bloquea | `pull_request` y `push` a main | `--audit-level=high` falla solo con severidad high o critical, que es exactamente la política: `critical` dejaría pasar las high y `moderate` bloquearía hallazgos que la política acepta. No se usa `--omit=dev` porque la política dice "ninguna dependencia" y las de desarrollo también se ejecutan en el runner. |
+| Secretos (5.3) | gitleaks sobre todo el historial (`fetch-depth: 0`); umbral: 0 hallazgos | Bloquea | `pull_request` y `push` a main | Un secreto subido ya está expuesto, así que no hay umbral tolerable. Se escanea el historial completo porque borrar el archivo en el último commit no elimina la clave de los commits anteriores. Un hallazgo solo se registra en `.gitleaksignore` si la clave fue rotada, con su razón. |
 
 ## Correctness Properties
 

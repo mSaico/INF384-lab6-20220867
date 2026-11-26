@@ -11,6 +11,14 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok', cursos: repositorio.listar().length });
 });
 
-// Aquí se montará el router de cursos: app.use('/cursos', require('./routes/cursos'));
+// Router de cursos montado en /cursos
+app.use('/cursos', require('./routes/cursos'));
+
+// Middleware de manejo de errores: respuesta genérica para errores no controlados.
+// eslint-disable-next-line no-unused-vars
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).json({ error: 'error interno del servidor' });
+});
 
 module.exports = app;

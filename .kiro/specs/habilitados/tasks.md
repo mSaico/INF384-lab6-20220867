@@ -67,26 +67,26 @@ Se añade el endpoint `POST /habilitados` a la API Express existente: valida el 
     - Restaurar el stub después del test (`afterEach`)
     - _Requisitos: 4.2, 4.3_
 
-- [ ] 6. Escribir tests de propiedades (PBT)
-  - [ ] 6.1 Property 1: equivalencia con el modelo de referencia
+- [x] 6. Escribir tests de propiedades (PBT)
+  - [x] 6.1 Property 1: equivalencia con el modelo de referencia
     - En `tests/habilitados.prop.test.js`, generar 100 subconjuntos aleatorios de códigos de `data/cursos.json` con PRNG semillado (`Math.random` con seed fija o un LCG propio), POST a cada uno y comparar contra el modelo de referencia calculado en el test (cursos no aprobados con todos los requisitos en la lista)
     - **Property 1: Equivalencia con el modelo de referencia**
     - **Valida: Requisitos 1.2, 1.3, 1.4, 2.4**
     - _Requisitos: 1.2, 1.3, 1.4, 2.4_
 
-  - [ ] 6.2 Property 2: rechazo de elementos inválidos
+  - [x] 6.2 Property 2: rechazo de elementos inválidos
     - Generar 100 strings inválidas (minúsculas, `<script>`, longitudes 5 y 7, caracteres especiales) con PRNG semillado, POST con cada una dentro de `aprobados` → 400 con `error`
     - **Property 2: Rechazo de elementos inválidos**
     - **Valida: Requisitos 2.1, 2.2, 2.3, 4.1**
     - _Requisitos: 2.1, 2.2, 2.3, 4.1_
 
-  - [ ] 6.3 Property 3: rechazo por tamaño
+  - [x] 6.3 Property 3: rechazo por tamaño
     - Generar listas de 151-200 códigos válidos con PRNG semillado, POST → 400 con `error`
     - **Property 3: Rechazo por tamaño**
     - **Valida: Requisito 3.1**
     - _Requisitos: 3.1_
 
-  - [ ] 6.4 Property 4: estabilidad ante reorden y duplicados
+  - [x] 6.4 Property 4: estabilidad ante reorden y duplicados
     - Para listas válidas generadas, reordenar (shuffle con PRNG semillado) y duplicar elementos (manteniendo ≤ 150) y verificar que la respuesta es idéntica a la original
     - **Property 4: Estabilidad ante reorden y duplicados**
     - **Valida: Requisitos 1.2, 1.3**

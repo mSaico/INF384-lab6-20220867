@@ -1,5 +1,22 @@
 {
-  "pbtResults": {},
+  "pbtResults": {
+    "6.1 Property 1: equivalencia con el modelo de referencia": {
+      "status": "passed",
+      "lastRunTimestamp": 1795733360253
+    },
+    "6.2 Property 2: rechazo de elementos inválidos": {
+      "status": "passed",
+      "lastRunTimestamp": 1795733362617
+    },
+    "6.3 Property 3: rechazo por tamaño": {
+      "status": "passed",
+      "lastRunTimestamp": 1795733364854
+    },
+    "6.4 Property 4: estabilidad ante reorden y duplicados": {
+      "status": "passed",
+      "lastRunTimestamp": 1795733367175
+    }
+  },
   "executionHistory": {
     "1.1 Añadir `listarHabilitados(aprobadosSet)` en `src/data/repositorio.js`": [
       {
@@ -154,6 +171,61 @@
         "executionId": "053a82d5-9d38-4df1-a7a7-616170cadefd",
         "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
         "timestamp": 1795733190230
+      }
+    ],
+    "6.1 Property 1: equivalencia con el modelo de referencia": [
+      {
+        "executionId": "6f4fbaf7-6e92-4ee5-96d9-bac04d889e74",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795733302564
+      },
+      {
+        "executionId": "6f4fbaf7-6e92-4ee5-96d9-bac04d889e74",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795733376051
+      }
+    ],
+    "6.2 Property 2: rechazo de elementos inválidos": [
+      {
+        "executionId": "6f4fbaf7-6e92-4ee5-96d9-bac04d889e74",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795733304676
+      },
+      {
+        "executionId": "6f4fbaf7-6e92-4ee5-96d9-bac04d889e74",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795733378299
+      }
+    ],
+    "6.3 Property 3: rechazo por tamaño": [
+      {
+        "executionId": "6f4fbaf7-6e92-4ee5-96d9-bac04d889e74",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795733306834
+      },
+      {
+        "executionId": "6f4fbaf7-6e92-4ee5-96d9-bac04d889e74",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795733380345
+      }
+    ],
+    "6.4 Property 4: estabilidad ante reorden y duplicados": [
+      {
+        "executionId": "6f4fbaf7-6e92-4ee5-96d9-bac04d889e74",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795733309964
+      },
+      {
+        "executionId": "6f4fbaf7-6e92-4ee5-96d9-bac04d889e74",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795733382476
+      }
+    ],
+    "6. Escribir tests de propiedades (PBT)": [
+      {
+        "executionId": "6f4fbaf7-6e92-4ee5-96d9-bac04d889e74",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795733382596
       }
     ]
   }

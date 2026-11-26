@@ -227,6 +227,39 @@
         "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
         "timestamp": 1795733382596
       }
+    ],
+    "7. Checkpoint - Verificar la suite completa": [
+      {
+        "executionId": "172d188b-d25b-4977-a7a4-c6ac41cafcf1",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795733495112
+      },
+      {
+        "executionId": "172d188b-d25b-4977-a7a4-c6ac41cafcf1",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795733542194
+      }
+    ],
+    "8.1 Añadir `coverageThreshold` a `package.json (clave \"jest\")`": [
+      {
+        "executionId": "172d188b-d25b-4977-a7a4-c6ac41cafcf1",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795733544253
+      }
+    ],
+    "8.2 Actualizar `.github/workflows/ci.yml`": [
+      {
+        "executionId": "172d188b-d25b-4977-a7a4-c6ac41cafcf1",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795733546347
+      }
+    ],
+    "8. Gates de calidad y seguridad en CI **([manual] - la hará el usuario a mano; no ejecutar)**": [
+      {
+        "executionId": "172d188b-d25b-4977-a7a4-c6ac41cafcf1",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795733546399
+      }
     ]
   }
 }

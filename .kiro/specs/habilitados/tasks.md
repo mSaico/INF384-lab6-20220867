@@ -92,17 +92,17 @@ Se añade el endpoint `POST /habilitados` a la API Express existente: valida el 
     - **Valida: Requisitos 1.2, 1.3**
     - _Requisitos: 1.2, 1.3_
 
-- [ ] 7. Checkpoint - Verificar la suite completa
+- [x] 7. Checkpoint - Verificar la suite completa
   - Ejecutar `npm test` y confirmar que todos los tests de `tests/habilitados*.test.js` y las suites existentes pasan
   - Corregir cualquier fallo antes de continuar
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 8. Gates de calidad y seguridad en CI **([manual] - la hará el usuario a mano; no ejecutar)**
-  - [ ] 8.1 Añadir `coverageThreshold` a `package.json (clave "jest")`
+- [x] 8. Gates de calidad y seguridad en CI **([manual] - la hará el usuario a mano; no ejecutar)**
+  - [x] 8.1 Añadir `coverageThreshold` a `jest.config.js`
     - `coverageThreshold: { global: { lines: 80 } }` (criterio 5.1)
     - _Requisitos: 5.1_
 
-  - [ ] 8.2 Actualizar `.github/workflows/ci.yml`
+  - [x] 8.2 Actualizar `.github/workflows/ci.yml`
     - Paso de pruebas con `npm test (que ejecuta jest --coverage)` (falla si la cobertura de líneas es < 80 %, criterio 5.1)
     - Paso `npm audit --audit-level=high` sin `--omit=dev` (falla con severidad high o critical, criterio 5.2)
     - Paso de gitleaks con `fetch-depth: 0` sobre todo el historial, umbral 0 hallazgos (criterio 5.3)

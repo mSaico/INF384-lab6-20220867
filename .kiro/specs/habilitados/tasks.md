@@ -21,14 +21,14 @@ Se añade el endpoint `POST /habilitados` a la API Express existente: valida el 
     - Los tests leen `data/cursos.json` directamente como modelo de referencia
     - _Requisitos: 1.2, 1.3, 1.4_
 
-- [ ] 2. Implementar el router `POST /habilitados` con validación de entrada
-  - [ ] 2.1 Crear `src/routes/habilitados.js`
+- [x] 2. Implementar el router `POST /habilitados` con validación de entrada
+  - [x] 2.1 Crear `src/routes/habilitados.js`
     - Router Express (`express.Router()`) con `router.post('/', ...)`
     - Validar en orden: presencia del campo `aprobados` (400, `"el campo aprobados es obligatorio"`), tipo array (400, `"aprobados debe ser un array de strings"`), todos los elementos string (400, mismo mensaje), formato `^[A-Z0-9]{6}$` por elemento (400, `"código de curso inválido"`)
     - Con la entrada válida: construir `new Set(aprobados)` (decisiones b, c, d del diseño), llamar `repositorio.listarHabilitados(set)` y responder 200 con el array completo de objetos de curso (decisión f)
     - _Requisitos: 2.1, 2.2, 2.3, 4.1_
 
-  - [ ] 2.2 Escribir tests de validación en `tests/habilitados.test.js` (supertest sobre `src/app.js`)
+  - [x] 2.2 Escribir tests de validación en `tests/habilitados.test.js` (supertest sobre `src/app.js`)
     - `test('2.1: 400 si falta el campo aprobados')` — POST con cuerpo `{}` → 400 con `error`
     - `test('2.2: 400 si aprobados es un string')` — POST con `{"aprobados": "1INF25"}` → 400, sin resultados
     - `test('2.3: 400 si algún elemento no es string')` — POST con `{"aprobados": [1, null]}` y variantes (boolean, objeto) → 400

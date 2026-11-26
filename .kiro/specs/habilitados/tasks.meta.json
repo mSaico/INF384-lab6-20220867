@@ -31,6 +31,37 @@
         "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
         "timestamp": 1795731224864
       }
+    ],
+    "2.1 Crear `src/routes/habilitados.js`": [
+      {
+        "executionId": "e768a312-759d-4293-b865-c41d80210dbd",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795731381996
+      },
+      {
+        "executionId": "e768a312-759d-4293-b865-c41d80210dbd",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795731446406
+      }
+    ],
+    "2.2 Escribir tests de validación en `tests/habilitados.test.js` (supertest sobre `src/app.js`)": [
+      {
+        "executionId": "e768a312-759d-4293-b865-c41d80210dbd",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795731384732
+      },
+      {
+        "executionId": "e768a312-759d-4293-b865-c41d80210dbd",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795731450834
+      }
+    ],
+    "2. Implementar el router `POST /habilitados` con validación de entrada": [
+      {
+        "executionId": "e768a312-759d-4293-b865-c41d80210dbd",
+        "chatSessionId": "sess_d488c2e0-ab2e-4c92-8bca-cf268c8247b4",
+        "timestamp": 1795731451026
+      }
     ]
   }
 }

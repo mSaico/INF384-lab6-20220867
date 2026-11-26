@@ -1,0 +1,4 @@
+# CATALOGO_API_KEY expuesta en config/ejemplo.env (commit 7506fec). La clave fue rotada
+# (revocada en el proveedor) y el valor se retiró del archivo; el hallazgo queda solo
+# en el historial. Se ignora este fingerprint porque la credencial ya no es válida.
+7506fecff32b342baaa4aa5dcb595bb5ccc75634:config/ejemplo.env:generic-api-key:4

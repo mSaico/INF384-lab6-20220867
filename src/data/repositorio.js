@@ -19,4 +19,12 @@ function obtener(codigo) {
   return porCodigo.get(codigo);
 }
 
-module.exports = { listar, listarPorCiclo, obtener };
+function listarHabilitados(aprobadosSet) {
+  return listar().filter(
+    (curso) =>
+      !aprobadosSet.has(curso.id) &&
+      curso.prerequisites.every((pr) => aprobadosSet.has(pr)),
+  );
+}
+
+module.exports = { listar, listarPorCiclo, obtener, listarHabilitados };

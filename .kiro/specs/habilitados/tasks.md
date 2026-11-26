@@ -6,15 +6,15 @@ Se añade el endpoint `POST /habilitados` a la API Express existente: valida el 
 
 ## Tasks
 
-- [ ] 1. Implementar `listarHabilitados` en el repositorio
-  - [ ] 1.1 Añadir `listarHabilitados(aprobadosSet)` en `src/data/repositorio.js`
+- [x] 1. Implementar `listarHabilitados` en el repositorio
+  - [x] 1.1 Añadir `listarHabilitados(aprobadosSet)` en `src/data/repositorio.js`
     - Recorrer `listar()` y devolver los cursos `c` tales que `!aprobadosSet.has(c.id)` y `c.prerequisites.every((pr) => aprobadosSet.has(pr))`
     - Los cursos sin requisitos (`prerequisites: []`) quedan habilitados mientras no estén aprobados (decisión a del diseño)
     - Mantener el orden de `listar()` (decisión e del diseño)
     - Exportar `listarHabilitados` en `module.exports`
     - _Requisitos: 1.2, 1.3, 1.4_
 
-  - [ ] 1.2 Escribir tests unitarios del repositorio en `tests/habilitados.repositorio.test.js`
+  - [x] 1.2 Escribir tests unitarios del repositorio en `tests/habilitados.repositorio.test.js`
     - `test('1.2: ningún curso aprobado aparece en el resultado')` — con un Set de aprobados de la malla, verificar que ningún id del resultado está en el Set
     - `test('1.3: ningún curso del resultado tiene un requisito fuera de los aprobados')` — verificar `c.prerequisites.every((pr) => aprobadosSet.has(pr))` para cada curso devuelto
     - `test('1.4: todos los cursos sin requisitos no aprobados están incluidos')` — con un Set que no contiene cursos sin requisitos, el resultado incluye todos los `prerequisites.length === 0`
